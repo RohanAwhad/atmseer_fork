@@ -1,4 +1,5 @@
-FROM ubuntu:16.04
+# FROM ubuntu:16.04
+FROM --platform=linux/amd64 ubuntu:18.04
 
 # install utilities
 RUN apt-get update -yqq  \
@@ -36,11 +37,12 @@ RUN pip3 install -r server/requirements.txt
 RUN pip3 uninstall -y scikit_learn
 RUN pip3 install scikit_learn==0.19.2
 
-RUN npm install --quiet
+# RUN npm install 
+# RUN npm audit fix
+# ENV NODE_OPTIONS "--openssl-legacy-provider"
+# RUN npm run build
 
-RUN npm run build
-
-EXPOSE 5000
+EXPOSE 8081
 
 # ENTRYPOINT [ "python" ]
 ENV PYTHONPATH "${PYTHONPATH}:/code/server"

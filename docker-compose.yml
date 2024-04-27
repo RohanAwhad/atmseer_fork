@@ -4,9 +4,10 @@ services:
     build: .
     container_name: atmseer
     ports:
-      - "5000:5000"
-    command: sudo python3 server/atm_server/server.py --port 5000
+      - "8081:8081"
+    command: sudo python3 server/atm_server/server.py --port 8081
     volumes:
       - ./logs:/code/logs
       - ./metrics:/code/models
       - ./models:/code/metrics
+      - ./pipelines:/code/pipelines
